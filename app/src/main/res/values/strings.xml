@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Safety App</string>
+    <string name="register">Register</string>
+    <string name="login">Log In</string>
+    <string name="registerbutton">Register</string>
+    <string name="loginbutton">Log In</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="loginText">Already Have an Account? Click here to Log In</string>
+    <string name="registerText">Does not have an Account? Click here to Register</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+
+<!--  profile fragment-->
+    <string name="perInfo">Personal Information</string>
+    <string name="fName">Full Name</string>
+    <string name="dOB">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="contactInfo">Contact Information</string>
+<!--    <string name="close_nav">Email Address</string>-->
+    <string name="phnNo">Phone Number</string>
+    <string name="addressInfo">Address Information</string>
+    <string name="homeAdd">Home Address</string>
+    <string name="workAdd">Work Address</string>
+    <string name="otherLoc">Other Frequent Locations</string>
+    <string name="emergencyContact">Emergency Contacts</string>
+    <string name="primaryEC">Primary Emergency Contact</string>
+    <string name="secondaryEC">Secondary Emergency Contact</string>
+    <string name="medicalInfo">Medical Information</string>
+    <string name="medicalCon">Medical Conditions</string>
+    <string name="allergies">Allergies</string>
+    <string name="bType">Blood Type</string>
+    <string name="medications">Medications</string>
+    <string name="saveProfileButton">Save</string>
+    <string name="editProfileButton">Edit</string>
+    <string name="profile">Profile</string>
+
+</resources>

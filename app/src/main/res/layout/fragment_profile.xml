@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/editProfileButton"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="240dp"
+            android:backgroundTint="@color/lavender"
+            android:text="@string/editProfileButton"
+            android:textColor="#263238"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            tools:ignore="VisualLintButtonSize" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/profiledefault"
+            app:civ_border_color="@color/purple_500"
+            app:civ_border_width="2dp"/>
+
+        <TextView
+            android:id="@+id/tv_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:textAlignment="center"
+            android:textColor="@color/lavender"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <!-- Personal Information -->
+        <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/custom_edittext">
+
+            <TextView
+                android:id="@+id/tv_personal_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/perInfo"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/fName"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:padding="14dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5C6BC0"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+            <EditText
+                android:id="@+id/et_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/dOB"
+                android:drawablePadding="15dp"
+                android:inputType="date"
+                android:padding="14dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5C6BC0"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+            <EditText
+                android:id="@+id/et_gender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/gender"
+                android:drawablePadding="15dp"
+                android:inputType="text"
+                android:padding="14dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5C6BC0"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Contact Information -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@drawable/custom_edittext">
+
+            <TextView
+                android:id="@+id/tv_contact_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contactInfo"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="@string/phnNo"
+                android:drawablePadding="15dp"
+                android:inputType="phone"
+                android:padding="14dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5C6BC0"
+                tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Address Information -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/custom_edittext">
+
+        <TextView
+            android:id="@+id/tv_address_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/addressInfo"
+            android:textAlignment="center"
+            android:textColor="@color/lavender"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/et_home_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext"
+            android:hint="@string/homeAdd"
+            android:drawablePadding="15dp"
+            android:inputType="text"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            android:textColorHint="#5C6BC0"
+            tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/et_work_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext"
+            android:hint="@string/workAdd"
+            android:drawablePadding="15dp"
+            android:inputType="text"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            android:textColorHint="#5C6BC0"
+            tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/et_other_frequent_locations"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext"
+            android:hint="@string/otherLoc"
+            android:drawablePadding="15dp"
+            android:inputType="text"
+            android:padding="14dp"
+            android:textColor="@color/black"
+            android:textColorHint="#5C6BC0"
+            tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+        <!-- Emergency Contacts -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/custom_edittext">
+
+                <TextView
+                    android:id="@+id/tv_emergency_contacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/emergencyContact"
+                    android:textAlignment="center"
+                    android:textColor="@color/lavender"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/et_primary_emergency_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/primaryEC"
+                    android:inputType="phone"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/et_secondary_emergency_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/secondaryEC"
+                    android:inputType="phone"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+                <!-- Medical Information -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/custom_edittext">
+
+                <TextView
+                    android:id="@+id/tv_medical_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medicalInfo"
+                    android:textAlignment="center"
+                    android:textColor="@color/lavender"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/et_medical_conditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/medicalCon"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/et_allergies"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/allergies"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/et_blood_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/bType"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/et_medications"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="15dp"
+                    android:hint="@string/medications"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5C6BC0"
+                    tools:ignore="Autofill,VisualLintTextFieldSize" />
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

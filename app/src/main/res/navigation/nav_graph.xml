@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.HomeFragment"
+        android:label="Home Fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_nextFragment"
+            app:destination="@id/nextFragment" />
+    </fragment>
+
+    <!-- Add more fragments and actions as needed -->
+    <fragment
+        android:id="@+id/nextFragment"
+        android:name="com.example.NextFragment"
+        android:label="Next Fragment" />
+
+</navigation>
