@@ -3,14 +3,9 @@
    See https://developer.android.com/about/versions/12/backup-restore#xml-changes
    for details.
 -->
-<data-extraction-rules xmlns:tools="http://schemas.android.com/tools">
-    <include tools:ignore="FullBackupContent" /> .../>
-    <exclude <![CDATA[.../>
-    -->
-    ]]><!--
-    <device-transfer>
-        <include .../>
-        <exclude .../>
-    </device-transfer>
-    -->
+<data-extraction-rules>
+    <cloud-backup>
+        
+    </cloud-backup>
+    
 </data-extraction-rules>
