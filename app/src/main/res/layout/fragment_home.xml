@@ -38,6 +38,7 @@
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
                 android:src="@drawable/policeicon"
+                android:padding="15dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize" />
 
@@ -48,7 +49,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/fire"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize"/>
 
@@ -59,7 +61,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/pharmacy"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize" />
 
@@ -70,7 +73,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/flood"
+                android:padding="15dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize" />
 
@@ -88,7 +92,8 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/woman"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize"/>
 
@@ -99,7 +104,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/child"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize" />
 
@@ -110,7 +116,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/railway"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize" />
 
@@ -121,7 +128,8 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/policeicon"
+                android:src="@drawable/sos"
+                android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize"/>
 

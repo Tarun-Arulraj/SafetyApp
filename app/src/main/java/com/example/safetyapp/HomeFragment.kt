@@ -61,14 +61,14 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         button7 = view.findViewById(R.id.button7)
         button8 = view.findViewById(R.id.button8)
 
-        setButtonColorFilter(button1)
-        setButtonColorFilter(button2)
-        setButtonColorFilter(button3)
-        setButtonColorFilter(button4)
-        setButtonColorFilter(button5)
-        setButtonColorFilter(button6)
-        setButtonColorFilter(button7)
-        setButtonColorFilter(button8)
+//        setButtonColorFilter(button1)
+//        setButtonColorFilter(button2)
+//        setButtonColorFilter(button3)
+//        setButtonColorFilter(button4)
+//        setButtonColorFilter(button5)
+//        setButtonColorFilter(button6)
+//        setButtonColorFilter(button7)
+//        setButtonColorFilter(button8)
 
         button1.setOnClickListener {
             // Add click listener for button1
