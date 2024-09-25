@@ -38,4 +38,15 @@
     <string name="editProfileButton">Edit</string>
     <string name="profile">Profile</string>
 
+<!--    homefragment-->
+    <string name="policeButton">Police</string>
+    <string name="fireButton">Fire</string>
+    <string name="medicalButton">Medical</string>
+    <string name="disasterButton">Disaster</string>
+    <string name="womenButton">Women</string>
+    <string name="childButton">Child</string>
+    <string name="railwayButton">Railway</string>
+    <string name="sosButton">SOS</string>
+
+
 </resources>

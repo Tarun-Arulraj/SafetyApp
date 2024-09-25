@@ -105,7 +105,6 @@ class ProfileFragment : Fragment() {
         etMedications.isEnabled = false
 
         // Edit button click listener
-        // Edit button click listener
         btnEdit.setOnClickListener {
             if (btnEdit.text == "Edit") {
                 // Enable editing

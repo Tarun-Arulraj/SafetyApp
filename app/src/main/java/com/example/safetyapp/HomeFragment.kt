@@ -2,12 +2,15 @@ package com.example.safetyapp
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.PorterDuff
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 //import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -24,22 +27,80 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
+import androidx.core.content.ContextCompat
 
 class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var myMap: GoogleMap
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var button1: ImageButton
+    private lateinit var button2: ImageButton
+    private lateinit var button3: ImageButton
+    private lateinit var button4: ImageButton
+    private lateinit var button5: ImageButton
+    private lateinit var button6: ImageButton
+    private lateinit var button7: ImageButton
+    private lateinit var button8: ImageButton
 
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_main3, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        button1 = view.findViewById(R.id.button1)
+        button2 = view.findViewById(R.id.button2)
+        button3 = view.findViewById(R.id.button3)
+        button4 = view.findViewById(R.id.button4)
+        button5 = view.findViewById(R.id.button5)
+        button6 = view.findViewById(R.id.button6)
+        button7 = view.findViewById(R.id.button7)
+        button8 = view.findViewById(R.id.button8)
+
+        setButtonColorFilter(button1)
+        setButtonColorFilter(button2)
+        setButtonColorFilter(button3)
+        setButtonColorFilter(button4)
+        setButtonColorFilter(button5)
+        setButtonColorFilter(button6)
+        setButtonColorFilter(button7)
+        setButtonColorFilter(button8)
+
+        button1.setOnClickListener {
+            // Add click listener for button1
+        }
+
+        button2.setOnClickListener {
+            // Add click listener for button2
+        }
+
+        button3.setOnClickListener {
+            // Add click listener for button3
+        }
+
+        button4.setOnClickListener {
+            // Add click listener for button4
+        }
+
+        button5.setOnClickListener {
+            // Add click listener for button5
+        }
+
+        button6.setOnClickListener {
+            // Add click listener for button6
+        }
+
+        button7.setOnClickListener {
+            // Add click listener for button7
+        }
+
+        button8.setOnClickListener {
+            // Add click listener for button8
+        }
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         if (mapFragment != null) {
@@ -109,4 +170,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
     override fun onMarkerClick(p0: Marker): Boolean {
         return false
     }
+
+    private fun setButtonColorFilter(button: ImageButton) {
+        button.setColorFilter(requireContext().getColor(R.color.lavender), PorterDuff.Mode.SRC_IN)
+    }
+
 }
