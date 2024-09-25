@@ -3,5 +3,15 @@
     <style name="Base.Theme.SafetyApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <resources>
+            <!-- Base application theme for dark mode -->
+            <style name="Base.Theme.SafetyApp" parent="Theme.Material3.DayNight.NoActionBar" tools:ignore="DuplicateDefinition">
+                <!-- Customize your theme here -->
+                <item name="colorPrimary">@color/primaryColor</item>
+                <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+                <item name="colorOnPrimary">@color/onPrimaryColor</item>
+            </style>
+        </resources>
+
     </style>
 </resources>
