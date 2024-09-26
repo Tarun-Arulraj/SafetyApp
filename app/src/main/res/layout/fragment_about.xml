@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Us Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/lavender"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="300dp"
+        android:text="122AX054 Tarun Arulraj 122AX053 Suraj Lohia    122AX061 Vedant Borade 122AX038 Rudrapriy Malgundkar"
+        android:textColor="@color/lavender"
+        android:textSize="27sp" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
