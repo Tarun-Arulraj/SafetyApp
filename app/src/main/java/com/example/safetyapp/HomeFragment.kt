@@ -1,9 +1,12 @@
 package com.example.safetyapp
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.PorterDuff
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -50,6 +53,24 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    private fun showAlertDialog(message: String, phoneNumber: String) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Emergency Service")
+        alertDialog.setMessage(message)
+        alertDialog.setPositiveButton("Yes") { _, _ ->
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                startActivity(intent)
+            } else {
+                ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE), 1)
+            }
+        }
+        alertDialog.setNegativeButton("No") { _, _ ->
+            // Do nothing or handle the no case
+        }
+        alertDialog.show()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button1 = view.findViewById(R.id.button1)
@@ -71,35 +92,35 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
 //        setButtonColorFilter(button8)
 
         button1.setOnClickListener {
-            // Add click listener for button1
+            showAlertDialog("Are you in need of police related emergency service?", "9136820860") // Police emergency number in India
         }
 
         button2.setOnClickListener {
-            // Add click listener for button2
+            showAlertDialog("Are you in need of fire related emergency service?", "101") // Fire emergency number in India
         }
 
         button3.setOnClickListener {
-            // Add click listener for button3
+            showAlertDialog("Are you in need of medical related emergency service?", "102") // Medical emergency number in India
         }
 
         button4.setOnClickListener {
-            // Add click listener for button4
+            showAlertDialog("Are you in need of flood related emergency service?", "1070") // Flood emergency number in India
         }
 
         button5.setOnClickListener {
-            // Add click listener for button5
+            showAlertDialog("Are you in need of women related emergency service?", "181") // Women emergency number in India
         }
 
         button6.setOnClickListener {
-            // Add click listener for button6
+            showAlertDialog("Are you in need of child related emergency service?", "1098") // Child emergency number in India
         }
 
         button7.setOnClickListener {
-            // Add click listener for button7
+            showAlertDialog("Are you in need of railway related emergency service?", "138") // Railway emergency number in India
         }
 
         button8.setOnClickListener {
-            // Add click listener for button8
+            showAlertDialog("Are you in need of SOS related emergency service?", "112") // SOS emergency number in India
         }
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
