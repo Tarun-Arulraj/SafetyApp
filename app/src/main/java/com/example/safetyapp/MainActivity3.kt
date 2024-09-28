@@ -94,6 +94,7 @@ class MainActivity3 : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
             R.id.nav_logout -> {
                 Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()
+                FirebaseAuth.getInstance().signOut() // Sign out the user
                 val intent = Intent(this, MainActivity2::class.java)
                 startActivity(intent)
                 finishAffinity() // Clear the entire activity stack

@@ -23,7 +23,6 @@ class MainActivity2 : AppCompatActivity() {
     lateinit var loginButton: Button
     lateinit var registerText: TextView
     lateinit var firebaseAuth: FirebaseAuth
-    lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,26 +34,17 @@ class MainActivity2 : AppCompatActivity() {
         registerText = findViewById<TextView>(R.id.registerText)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        firestore = FirebaseFirestore.getInstance()
+
+        if (firebaseAuth.currentUser != null) {
+            // User is already signed in, start the main activity
+            val intent = Intent(this, MainActivity3::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         loginButton.setOnClickListener(View.OnClickListener {
             val usernameText = username.text.toString()
             val passwordText = password.text.toString()
-
-            val email = username.text.toString().trim()
-            val password = password.text.toString().trim()
-
-            firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("FirebaseAuth", "User logged in successfully")
-                        Toast.makeText(this, "User Logged In.", Toast.LENGTH_SHORT).show()
-                        onLoginRegisterSuccess()
-                    } else {
-                        Log.e("FirebaseAuth", "Error logging in user: ${task.exception?.message}")
-                        Toast.makeText(this, "User Not Logged In.", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
             if (passwordText.length >= 8) {
                 var hasCapitalLetter = false
@@ -103,27 +93,16 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun authenticateUser(username: String, password: String) {
-        firestore.collection("users")
-            .whereEqualTo("username", username)
-            .get()
+        firebaseAuth.signInWithEmailAndPassword(username, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val querySnapshot = task.result
-                    if (querySnapshot != null && !querySnapshot.isEmpty) {
-                        val user = querySnapshot.documents[0]
-                        val storedPassword = user.get("password") as String
-                        if (storedPassword == password) {
-                            onLoginRegisterSuccess()
-                        } else {
-                            Toast.makeText(this, "Login Failed! Incorrect password.", Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        Toast.makeText(this, "Login Failed! User not found.", Toast.LENGTH_SHORT).show()
-                    }
+                    Log.d("FirebaseAuth", "User logged in successfully")
+                    Toast.makeText(this, "User Logged In.", Toast.LENGTH_SHORT).show()
+                    onLoginRegisterSuccess()
                 } else {
+                    Log.e("FirebaseAuth", "Error logging in user: ${task.exception?.message}")
                     Toast.makeText(this, "Login Failed! Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
-
 }

@@ -128,7 +128,7 @@
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/lavender"
                 android:scaleType="fitCenter"
-                android:src="@drawable/sos"
+                android:src="@drawable/suicideprevention"
                 android:padding="20dp"
                 app:cornerRadius="20dp"
                 tools:ignore="VisualLintButtonSize"/>

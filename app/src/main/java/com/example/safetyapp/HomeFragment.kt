@@ -120,7 +120,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         }
 
         button8.setOnClickListener {
-            showAlertDialog("Are you in need of SOS related emergency service?", "112") // SOS emergency number in India
+            showAlertDialog("Are you in need of emotional and mental related emergency service?", "9892839923") // suicide prevention emergency number in India
         }
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
