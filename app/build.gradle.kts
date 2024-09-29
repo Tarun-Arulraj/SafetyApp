@@ -58,5 +58,6 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("de.mkammerer:argon2-jvm:2.7")
+    implementation("com.firebase:geofire-android:3.2.0")
 
 }

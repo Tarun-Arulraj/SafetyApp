@@ -8,16 +8,15 @@ import android.graphics.PorterDuff
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
-//import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-//import com.example.navigationdrawer.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -30,7 +29,8 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
-import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private lateinit var myMap: GoogleMap
@@ -44,6 +44,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
     private lateinit var button6: ImageButton
     private lateinit var button7: ImageButton
     private lateinit var button8: ImageButton
+    private var currentLocation: Location? = null
+    private val LOCATION_UPDATE_INTERVAL = 10000 // 10 seconds
+    private lateinit var locationUpdateHandler: Handler
+    private lateinit var locationUpdateRunnable: Runnable
 
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
@@ -82,15 +86,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         button7 = view.findViewById(R.id.button7)
         button8 = view.findViewById(R.id.button8)
 
-//        setButtonColorFilter(button1)
-//        setButtonColorFilter(button2)
-//        setButtonColorFilter(button3)
-//        setButtonColorFilter(button4)
-//        setButtonColorFilter(button5)
-//        setButtonColorFilter(button6)
-//        setButtonColorFilter(button7)
-//        setButtonColorFilter(button8)
-
         button1.setOnClickListener {
             showAlertDialog("Are you in need of police related emergency service?", "9136820860") // Police emergency number in India
         }
@@ -128,10 +123,20 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             mapFragment.getMapAsync(this@HomeFragment)
         } else {
             // Handle the null case, e.g. show an error message
-            println("Error: Map fragment is null")
+            println ("Error: Map fragment is null")
         }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this.requireContext())
+
+        locationUpdateHandler = Handler(requireActivity().mainLooper)
+        locationUpdateRunnable = object : Runnable {
+            override fun run() {
+                updateCurrentLocation()
+                locationUpdateHandler.postDelayed(this, LOCATION_UPDATE_INTERVAL.toLong())
+            }
+        }
+
+        locationUpdateHandler.post(locationUpdateRunnable)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -143,9 +148,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         setUpMap()
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        @Suppress("DEPRECATION")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -161,8 +164,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             myMap.isMyLocationEnabled = true
+            val locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            locationRequest.interval = LOCATION_UPDATE_INTERVAL.toLong()
             fusedLocationClient.requestLocationUpdates(
-                LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY),
+                locationRequest,
                 object : LocationCallback() {
                     override fun onLocationResult(locationResult: LocationResult) {
                         val location = locationResult.lastLocation
@@ -171,6 +176,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
                             val currentLatLng = LatLng(location.latitude, location.longitude)
                             placeMarkerOnMap(currentLatLng)
                             myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                            storeCurrentLocationInFirestore(location)
                         }
                     }
                 },
@@ -179,6 +185,35 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         } else {
             ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_REQUEST_CODE)
+        }
+    }
+
+    private fun updateCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this.requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    currentLocation = location
+                    storeCurrentLocationInFirestore(location)
+                }
+            }
+        }
+    }
+
+    private fun storeCurrentLocationInFirestore(location: Location) {
+        val db = FirebaseFirestore.getInstance()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            db.collection("users").document(userId).update("location", location)
+                .addOnSuccessListener {
+                    Log.d("Location", "Current location updated successfully")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("Location", "Error updating current location", e)
+                }
         }
     }
 
@@ -196,4 +231,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickList
         button.setColorFilter(requireContext().getColor(R.color.lavender), PorterDuff.Mode.SRC_IN)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        locationUpdateHandler.removeCallbacks(locationUpdateRunnable)
+    }
 }
