@@ -119,34 +119,6 @@ class MainActivity : AppCompatActivity() {
         loginText.movementMethod = LinkMovementMethod.getInstance()
     }
 
-//    private fun authenticateUser(username: String, password: String) {
-//        firestore.collection("users")
-//            .whereEqualTo("username", username)
-//            .get()
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    val querySnapshot = task.result
-//                    if (querySnapshot != null && !querySnapshot.isEmpty) {
-//                        val user = querySnapshot.documents[0]
-//                        val storedPassword = user.get("password") as String
-//                        val storedName = user.get("name") as String // Retrieve the "name" attribute
-//
-//                        if (storedPassword == password) {
-//                            onLoginRegisterSuccess()
-//                            // Use the storedName attribute as needed
-//                            Toast.makeText(this, "Welcome, $storedName!", Toast.LENGTH_SHORT).show()
-//                        } else {
-//                            Toast.makeText(this, "Login Failed! Incorrect password.", Toast.LENGTH_SHORT).show()
-//                        }
-//                    } else {
-//                        Toast.makeText(this, "Login Failed! User not found.", Toast.LENGTH_SHORT).show()
-//                    }
-//                } else {
-//                    Toast.makeText(this, "Login Failed! Error retrieving user data.", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//    }
-
     fun onLoginRegisterSuccess() {
         val user = firebaseAuth.currentUser
         if (user != null) {
