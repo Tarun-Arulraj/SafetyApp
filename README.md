@@ -53,5 +53,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/NewFeature`).
 5. Open a Pull Request.
 
-##Department side Application 
-https://github.com/Tarun-Arulraj/SafetyAppDept
+Department Side Application
+This companion app is intended for use by emergency response departments to receive alerts and live location updates from SafetyApp users. It helps authorities monitor and respond efficiently to incoming emergency requests from the public.
+
+You can find the repository here: https://github.com/Tarun-Arulraj/SafetyAppDept
+
+Let me know if you want a longer description or more technical detail added!
