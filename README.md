@@ -52,3 +52,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some feature'`).
 4. Push to the branch (`git push origin feature/NewFeature`).
 5. Open a Pull Request.
+
+##Department side Application 
+https://github.com/Tarun-Arulraj/SafetyAppDept
